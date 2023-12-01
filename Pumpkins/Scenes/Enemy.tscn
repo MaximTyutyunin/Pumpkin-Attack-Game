@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://rwtxmhe2ihtl"]
+
+[ext_resource type="Texture2D" uid="uid://co6swmohk8kd5" path="res://Textures/enemy.png" id="1_0fibh"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_os422"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rblm5"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4luym"]
+radius = 40.05
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tbvlr"]
+radius = 314.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_os422")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -0.999999)
+scale = Vector2(2.1875, 2.3125)
+texture = ExtResource("1_0fibh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rblm5")
+
+[node name="DamageZone" type="Area2D" parent="." groups=["damage_zone_area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+shape = SubResource("CircleShape2D_rblm5")
+
+[node name="HitZone" type="Area2D" parent="." groups=["hit_zone_area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
+shape = SubResource("CircleShape2D_4luym")
+
+[node name="SeekPlayerZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeekPlayerZone"]
+shape = SubResource("CircleShape2D_tbvlr")
+
+[node name="AttackDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="DamageZone" to="." method="_on_damage_zone_area_entered"]
+[connection signal="body_entered" from="HitZone" to="." method="_on_hit_zone_body_entered"]
+[connection signal="body_exited" from="HitZone" to="." method="_on_hit_zone_body_exited"]
+[connection signal="body_entered" from="SeekPlayerZone" to="." method="_on_seek_player_zone_body_entered"]
+[connection signal="body_exited" from="SeekPlayerZone" to="." method="_on_seek_player_zone_body_exited"]
+[connection signal="timeout" from="AttackDelayTimer" to="." method="_on_attack_delay_timer_timeout"]

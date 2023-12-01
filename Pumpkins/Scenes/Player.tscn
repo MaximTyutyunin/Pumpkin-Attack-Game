@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcv4u2mgfppgw"]
+
+[ext_resource type="Texture2D" uid="uid://dwfgrfmp6f4ce" path="res://Textures/main_character1.png" id="1_1ph4r"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_tuljo"]
+[ext_resource type="PackedScene" uid="uid://c52gd2d5a7gly" path="res://Scenes/Bullet.tscn" id="2_r8sjh"]
+[ext_resource type="Script" path="res://Scripts/Marker2D_Muzzle.gd" id="3_702g6"]
+[ext_resource type="Texture2D" uid="uid://xtpenmq1rkt4" path="res://Textures/gun_fire.png" id="5_cpb81"]
+[ext_resource type="Texture2D" uid="uid://d21utlbm53w0i" path="res://icon.svg" id="5_qw6pj"]
+[ext_resource type="PackedScene" uid="uid://c81hhlnc2biry" path="res://Scenes/UI.tscn" id="7_ttil2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yhang"]
+radius = 4.3125
+height = 11.75
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxxuc"]
+size = Vector2(9, 12)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+position = Vector2(581.75, 327.5)
+scale = Vector2(4, 4)
+script = ExtResource("1_tuljo")
+bullet = ExtResource("2_r8sjh")
+
+[node name="Marker2D_Muzzle" type="Marker2D" parent="."]
+show_behind_parent = true
+z_index = -1
+position = Vector2(0.25, 0.25)
+script = ExtResource("3_702g6")
+
+[node name="Sprite2D_aim" type="Sprite2D" parent="Marker2D_Muzzle"]
+position = Vector2(36.705, -0.5)
+scale = Vector2(0.0273438, 0.0273438)
+texture = ExtResource("5_qw6pj")
+
+[node name="Sprite2D_fire" type="Sprite2D" parent="Marker2D_Muzzle"]
+visible = false
+texture_filter = 1
+position = Vector2(9.29, -0.25)
+rotation = 1.5708
+scale = Vector2(0.713193, 1.08927)
+texture = ExtResource("5_cpb81")
+
+[node name="MeleWeapon" type="Area2D" parent="Marker2D_Muzzle" groups=["weapon"]]
+position = Vector2(9.535, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D_Muzzle/MeleWeapon"]
+shape = SubResource("CapsuleShape2D_yhang")
+disabled = true
+one_way_collision_margin = 0.0
+
+[node name="RechargeWeaponTimer" type="Timer" parent="Marker2D_Muzzle/MeleWeapon"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_1ph4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.125)
+shape = SubResource("RectangleShape2D_nxxuc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -500000
+limit_top = -500000
+limit_right = 500000
+limit_bottom = 500000
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="UI" parent="Camera2D" instance=ExtResource("7_ttil2")]
+
+[node name="WeaponTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

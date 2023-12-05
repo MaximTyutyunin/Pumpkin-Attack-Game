@@ -1,0 +1,247 @@
+[gd_scene load_steps=23 format=3 uid="uid://dgi3x3ascfc6f"]
+
+[ext_resource type="Texture2D" uid="uid://dveh4e1jnay4m" path="res://Textures/black square.svg" id="1_f2lc4"]
+[ext_resource type="Script" path="res://Scripts/hub_level.gd" id="1_jbti5"]
+[ext_resource type="PackedScene" uid="uid://dcv4u2mgfppgw" path="res://Scenes/Player.tscn" id="1_nvfmi"]
+[ext_resource type="FontFile" uid="uid://cbelx22tg42qn" path="res://Textures/pixel-emulator-font/PixelEmulator-xq08.ttf" id="2_lq3lg"]
+[ext_resource type="Texture2D" uid="uid://bp16sm4rb2mey" path="res://Textures/image home 1-export.svg" id="2_nmc6n"]
+[ext_resource type="Script" path="res://Scripts/hub_exit.gd" id="5_iv4ku"]
+[ext_resource type="Script" path="res://Scripts/instructions_trigger.gd" id="6_x44m0"]
+[ext_resource type="Texture2D" uid="uid://cwqrrnuhvtegg" path="res://Textures/interract_button.svg" id="8_fwv8l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tc4x"]
+size = Vector2(37, 26)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbutv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kyrd"]
+size = Vector2(28, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooeji"]
+size = Vector2(20, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ae4lu"]
+radius = 9.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0m3n4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ot13f"]
+radius = 9.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fua2"]
+size = Vector2(52.5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cawpp"]
+size = Vector2(9, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eara0"]
+radius = 16.1245
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ug20"]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2l17"]
+size = Vector2(20, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0578"]
+radius = 19.0263
+
+[sub_resource type="LabelSettings" id="LabelSettings_5cpuc"]
+font = ExtResource("2_lq3lg")
+font_size = 36
+
+[node name="HubLevel" type="Node2D"]
+script = ExtResource("1_jbti5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1.135, -25)
+scale = Vector2(26.16, 26.16)
+texture = ExtResource("1_f2lc4")
+
+[node name="Player" parent="." instance=ExtResource("1_nvfmi")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+scale = Vector2(0.26, 0.256098)
+texture = ExtResource("2_nmc6n")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-34.5, -51)
+shape = SubResource("RectangleShape2D_4tc4x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-11, -60)
+shape = SubResource("CircleShape2D_cbutv")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-39, -12.5)
+shape = SubResource("RectangleShape2D_4kyrd")
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D16"]
+position = Vector2(-51, 6)
+shape = SubResource("RectangleShape2D_4kyrd")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(24, 7)
+shape = SubResource("RectangleShape2D_ooeji")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D9"]
+position = Vector2(40, -57)
+shape = SubResource("CapsuleShape2D_ae4lu")
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D15"]
+position = Vector2(49, -49)
+shape = SubResource("CircleShape2D_0m3n4")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10"]
+position = Vector2(15, -65)
+shape = SubResource("RectangleShape2D_ooeji")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D11"]
+position = Vector2(0, -66)
+shape = SubResource("RectangleShape2D_ooeji")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D12"]
+position = Vector2(29, -65)
+shape = SubResource("CapsuleShape2D_ot13f")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+position = Vector2(-35.5, 13.5)
+shape = SubResource("RectangleShape2D_1fua2")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
+position = Vector2(32.25, 13)
+shape = SubResource("RectangleShape2D_1fua2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D6"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_1fua2")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
+position = Vector2(-57, -9.5)
+shape = SubResource("RectangleShape2D_cawpp")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8"]
+position = Vector2(57, -42)
+shape = SubResource("RectangleShape2D_cawpp")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D13"]
+position = Vector2(39, -13)
+shape = SubResource("CircleShape2D_eara0")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="." groups=["obstacle"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D14"]
+position = Vector2(12, -22)
+shape = SubResource("CapsuleShape2D_5ug20")
+
+[node name="Exit" type="Area2D" parent="."]
+script = ExtResource("5_iv4ku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_i2l17")
+
+[node name="Hint" type="Sprite2D" parent="Exit"]
+visible = false
+position = Vector2(12, 13)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_fwv8l")
+
+[node name="InstructionsTrigger" type="Area2D" parent="."]
+script = ExtResource("6_x44m0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InstructionsTrigger"]
+position = Vector2(-32, -8)
+shape = SubResource("CircleShape2D_d0578")
+
+[node name="Hint" type="Sprite2D" parent="InstructionsTrigger"]
+visible = false
+position = Vector2(-40, -16)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_fwv8l")
+
+[node name="Instructions" type="ColorRect" parent="."]
+visible = false
+offset_left = -88.0
+offset_top = -40.0
+offset_right = 437.0
+offset_bottom = 234.0
+scale = Vector2(0.11, 0.11)
+color = Color(0.207843, 0.207843, 0.207843, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 30
+
+[node name="Label" type="Label" parent="Instructions/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "WASD - movement
+RKM - meke attack
+LKM - shoot
+R - reload
+E - use/interact"
+label_settings = SubResource("LabelSettings_5cpuc")
+
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
+[connection signal="body_exited" from="Exit" to="Exit" method="_on_body_exited"]
+[connection signal="body_entered" from="InstructionsTrigger" to="InstructionsTrigger" method="_on_body_entered"]
+[connection signal="body_exited" from="InstructionsTrigger" to="InstructionsTrigger" method="_on_body_exited"]

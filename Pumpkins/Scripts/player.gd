@@ -3,7 +3,7 @@ extends CharacterBody2D
 var is_reloading: bool
 var input_direction
 
-@export var speed = 370
+@export var speed = 170
 @export var friction = 20
 @export var acceleration = 10
 @export var bullet : PackedScene
@@ -16,12 +16,14 @@ var input_direction
 @onready var mele_weapon: CollisionShape2D = $Marker2D_Muzzle/MeleWeapon/CollisionShape2D
 @onready var weapon_timer: Timer = $WeaponTimer
 @onready var recharge_weapon_timer: Timer = $Marker2D_Muzzle/MeleWeapon/RechargeWeaponTimer
-@onready var UI: UI = $Camera2D/UI
+@onready var UI: UI = $UI
 @onready var reload_timer: Timer = $ReloadTimer
+@onready var camera_2d: Camera2D = $Camera2D
 
 #----------------------------------------------------
 
 func _ready():
+	#update_camera_limits() #this is another way of setting the camera but i didnt use it
 	is_reloading = false
 	UI.update_health_ui(hp) #set initial lives when spawning
 	UI.update_kills(kills)
@@ -35,7 +37,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	
 	$Marker2D_Muzzle/Sprite2D_fire.visible = false
 	# Calculate input strengths once
 	var right_input = Input.get_action_strength("right")
@@ -94,6 +95,15 @@ func update_hp():
 func death():
 	queue_free()
 
+func update_camera_limits():
+	var tilemap_rect = get_parent().get_node("TileMap").get_used_rect()
+	#var tilemap_cell_size = get_parent().get_node("TileMap").cell_quadrant_size
+	#i use 16 beacause all tiles are 16x16  pixels anyways and no need to recalculate them
+	camera_2d.limit_left = tilemap_rect.position.x * 16#* tilemap_cell_size.x
+	camera_2d.limit_right = tilemap_rect.end.x * 16 #* tilemap_cell_size.x
+	camera_2d.limit_top = tilemap_rect.position.y * 16#* tilemap_cell_size.y
+	camera_2d.limit_bottom = tilemap_rect.end.y * 16#* tilemap_cell_size.y
+
 func on_get_hit(damage, knockback_strength, enemy_position):
 	hp -= damage
 	#call a function on the UI scene
@@ -127,6 +137,7 @@ func start_reload():
 	if not is_reloading and bullet_count < BULLET_MAX_AMOUNT:
 		is_reloading = true
 		reload_timer.start()  # Start the timer
+
 
 func _on_reload_timer_timeout():
 	if bullet_count < BULLET_MAX_AMOUNT && is_reloading == true:

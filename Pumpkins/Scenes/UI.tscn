@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://b78jfdn8wkfoe" path="res://Textures/healt.png" id="1_8g7wg"]
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_d1rig"]
 [ext_resource type="FontFile" uid="uid://cbelx22tg42qn" path="res://Textures/pixel-emulator-font/PixelEmulator-xq08.ttf" id="2_jbohx"]
-[ext_resource type="Texture2D" uid="uid://bjsl44n2vh3tf" path="res://Textures/pixel-emulator-font/pumpkin head.svg" id="4_o3pco"]
-[ext_resource type="Texture2D" uid="uid://bxvqvanpf681y" path="res://Textures/pixel-emulator-font/Sprite-0001.svg" id="4_ten0j"]
-[ext_resource type="Texture2D" uid="uid://cjpoebm8sc6q3" path="res://Textures/pixel-emulator-font/bullet_shadow.svg" id="6_1iiod"]
-[ext_resource type="Texture2D" uid="uid://cd2777vlbeglv" path="res://Textures/pixel-emulator-font/bullet.svg" id="7_fskeh"]
+[ext_resource type="Texture2D" uid="uid://bjsl44n2vh3tf" path="res://Textures/pumpkin head.svg" id="4_jtcgc"]
+[ext_resource type="Texture2D" uid="uid://bxvqvanpf681y" path="res://Textures/Sprite-0001.svg" id="5_h6fdp"]
+[ext_resource type="Texture2D" uid="uid://cjpoebm8sc6q3" path="res://Textures/bullet_shadow.svg" id="6_eqnnr"]
+[ext_resource type="Texture2D" uid="uid://cd2777vlbeglv" path="res://Textures/bullet.svg" id="7_aueuo"]
 
 [sub_resource type="Theme" id="Theme_dh6ms"]
 default_font = ExtResource("2_jbohx")
@@ -22,6 +22,7 @@ font_size = 36
 script = ExtResource("1_d1rig")
 
 [node name="Control" type="Control" parent="."]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,7 +124,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("4_o3pco")
+texture = ExtResource("4_jtcgc")
 stretch_mode = 5
 
 [node name="KillsLabel" type="Label" parent="Control/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
@@ -154,7 +155,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/ColorRect2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("4_ten0j")
+texture = ExtResource("5_h6fdp")
 stretch_mode = 5
 
 [node name="FertilizerLabel" type="Label" parent="Control/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/ColorRect2/MarginContainer/HBoxContainer"]
@@ -182,5 +183,5 @@ max_value = 15.0
 value = 14.0
 fill_mode = 3
 nine_patch_stretch = true
-texture_under = ExtResource("6_1iiod")
-texture_progress = ExtResource("7_fskeh")
+texture_under = ExtResource("6_eqnnr")
+texture_progress = ExtResource("7_aueuo")

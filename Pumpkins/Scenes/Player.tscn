@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcv4u2mgfppgw"]
+[gd_scene load_steps=11 format=3 uid="uid://dcv4u2mgfppgw"]
 
 [ext_resource type="Texture2D" uid="uid://dwfgrfmp6f4ce" path="res://Textures/main_character1.png" id="1_1ph4r"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_tuljo"]
 [ext_resource type="PackedScene" uid="uid://c52gd2d5a7gly" path="res://Scenes/Bullet.tscn" id="2_r8sjh"]
-[ext_resource type="Script" path="res://Scripts/Marker2D_Muzzle.gd" id="3_702g6"]
+[ext_resource type="Texture2D" uid="uid://dn024p6hk0kg8" path="res://Textures/marker.svg" id="4_gfua1"]
+[ext_resource type="Script" path="res://Scripts/muzzle_player.gd" id="4_xacyp"]
 [ext_resource type="Texture2D" uid="uid://xtpenmq1rkt4" path="res://Textures/gun_fire.png" id="5_cpb81"]
-[ext_resource type="Texture2D" uid="uid://d21utlbm53w0i" path="res://icon.svg" id="5_qw6pj"]
+[ext_resource type="Script" path="res://Scripts/camera_on_player.gd" id="7_plfn7"]
 [ext_resource type="PackedScene" uid="uid://c81hhlnc2biry" path="res://Scenes/UI.tscn" id="7_ttil2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yhang"]
@@ -17,21 +18,19 @@ size = Vector2(9, 12)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
-position = Vector2(581.75, 327.5)
-scale = Vector2(4, 4)
 script = ExtResource("1_tuljo")
 bullet = ExtResource("2_r8sjh")
 
+[node name="UI" parent="." instance=ExtResource("7_ttil2")]
+
 [node name="Marker2D_Muzzle" type="Marker2D" parent="."]
 show_behind_parent = true
-z_index = -1
 position = Vector2(0.25, 0.25)
-script = ExtResource("3_702g6")
+script = ExtResource("4_xacyp")
 
 [node name="Sprite2D_aim" type="Sprite2D" parent="Marker2D_Muzzle"]
 position = Vector2(36.705, -0.5)
-scale = Vector2(0.0273438, 0.0273438)
-texture = ExtResource("5_qw6pj")
+texture = ExtResource("4_gfua1")
 
 [node name="Sprite2D_fire" type="Sprite2D" parent="Marker2D_Muzzle"]
 visible = false
@@ -62,6 +61,7 @@ position = Vector2(0, 2.125)
 shape = SubResource("RectangleShape2D_nxxuc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 limit_left = -500000
 limit_top = -500000
 limit_right = 500000
@@ -70,8 +70,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="UI" parent="Camera2D" instance=ExtResource("7_ttil2")]
+script = ExtResource("7_plfn7")
 
 [node name="WeaponTimer" type="Timer" parent="."]
 wait_time = 0.5

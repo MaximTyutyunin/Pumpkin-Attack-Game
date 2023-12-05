@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal enemy_attack(damage,knockback_strength, enemy_position)
 
-@export var speed = 250
+@export var speed = 90
 
 @onready var attack_delay_timer: Timer = $AttackDelayTimer
 
@@ -10,6 +10,7 @@ var hp = 5
 var player_detected = false
 var mov_direction = Vector2()
 var player_ref: CharacterBody2D
+var knockback_strength = 900
 
 #----------------------------------------------------
 
@@ -60,7 +61,7 @@ func _on_hit_zone_body_entered(body: Node2D) -> void:
 func _on_attack_delay_timer_timeout() -> void:
 	# This function is called when the timer times out
 	if player_ref and player_ref.is_in_group("player"):
-		EventBus.signal_player_gets_hit.emit(1, 1800, self.global_position)
+		EventBus.signal_player_gets_hit.emit(1, knockback_strength, self.global_position)
 
 
 func _on_hit_zone_body_exited(body: Node2D) -> void:

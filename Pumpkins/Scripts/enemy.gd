@@ -15,6 +15,7 @@ var knockback_strength = 900
 #----------------------------------------------------
 
 func _ready():
+	#EventBus.connect("signal_player_gets_hit", on_get_hit)
 	var players = get_tree().get_nodes_in_group("player")
 	for player in players:
 		pass
@@ -29,6 +30,12 @@ func _physics_process(delta: float) -> void:
 #		var player = players[0]
 #		accelerate_towards_point(player, delta)
 #		move_and_slide()
+
+#func on_get_hit(damage, knockback_strength, enemy_position):
+#	var knockback_direction = global_position - enemy_position
+#	knockback_direction = knockback_direction.normalized()
+#	# Apply the knockback effect
+#	velocity += knockback_direction * knockback_strength
 
 func _on_damage_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("weapon"):

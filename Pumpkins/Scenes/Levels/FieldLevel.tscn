@@ -843,14 +843,12 @@ shape = SubResource("RectangleShape2D_wqknh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House/StaticBody2D2"]
 position = Vector2(42.1141, 18.0087)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wqknh")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="House"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House/StaticBody2D3"]
 position = Vector2(134.878, 60.3043)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wqknh")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="House"]
@@ -858,7 +856,6 @@ position = Vector2(0.885765, -29.5739)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House/StaticBody2D4"]
 position = Vector2(134.878, 60.3043)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wqknh")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="House"]
@@ -866,7 +863,6 @@ position = Vector2(-143.413, 70.8782)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House/StaticBody2D5"]
 position = Vector2(134.878, 60.3043)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wqknh")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="House"]
@@ -874,7 +870,6 @@ position = Vector2(-97.0316, 70.8782)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House/StaticBody2D6"]
 position = Vector2(134.878, 60.3043)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wqknh")
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="House"]
@@ -882,7 +877,6 @@ position = Vector2(-81.5709, 70.8782)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House/StaticBody2D7"]
 position = Vector2(134.878, 60.3043)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wqknh")
 
 [node name="Enemy" parent="." instance=ExtResource("7_jyjgf")]

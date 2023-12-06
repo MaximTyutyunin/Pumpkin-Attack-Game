@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw3ax3fbr5e2l"
-path="res://.godot/imported/Player-rpg.svg-6b9e994f9e68f899e7f186403c0d1977.ctex"
+uid="uid://bmhgpsookjxh6"
+path="res://.godot/imported/melee_atk.svg-12f77cb7e1af1a0525967e3d99572bf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Player-rpg.svg"
-dest_files=["res://.godot/imported/Player-rpg.svg-6b9e994f9e68f899e7f186403c0d1977.ctex"]
+source_file="res://Textures/melee_atk.svg"
+dest_files=["res://.godot/imported/melee_atk.svg-12f77cb7e1af1a0525967e3d99572bf4.ctex"]
 
 [params]
 
